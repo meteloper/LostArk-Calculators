@@ -12,5 +12,6 @@ public class UIPalenItemList : MonoBehaviour
     public TextMeshProUGUI ResultOutput_1;
     public TextMeshProUGUI ResultOutput_2;
     public TextMeshProUGUI ResultOutput_3;
+    public Transform HowToUsePanel;
 
 }

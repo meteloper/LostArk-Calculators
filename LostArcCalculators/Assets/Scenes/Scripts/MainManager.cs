@@ -27,6 +27,13 @@ public class MainManager : Singleton<MainManager>
         LoadMarketPrice();
         ResetPanel();
         CreateListItems();
+
+        if (PlayerPrefs.GetInt("is_first_open", 0) == 0)
+        {
+
+            OnClickHowToUse();
+            PlayerPrefs.SetInt("is_first_open", 1);
+        }
     }
 
     private void CalculateBest()
@@ -115,7 +122,7 @@ public class MainManager : Singleton<MainManager>
 
     private void ResetPanel()
     {
-        UIPanelItemList.Input_1.text = "0";
+        UIPanelItemList.Input_1.text = "1";
         UIPanelItemList.ResultOutput_1.text = $"0{ResourceManager.CS_ICON}";
         UIPanelItemList.ResultOutput_2.text = $"0{ResourceManager.GOLD_ICON}";
         UIPanelItemList.ResultOutput_3.text = "";
@@ -221,5 +228,16 @@ public class MainManager : Singleton<MainManager>
         CalculateBest();
         SetTables();
     }
+
+    public void OnClickHowToUse()
+    {
+        UIPanelItemList.HowToUsePanel.gameObject.SetActive(true);
+    }
+
+    public void OnClickCloseHowToUse()
+    {
+        UIPanelItemList.HowToUsePanel.gameObject.SetActive(false);
+    }
+
 
 }
