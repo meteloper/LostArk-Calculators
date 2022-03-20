@@ -6,13 +6,16 @@ using Utilities;
 
      
 
-public class UIManager : Singleton<UIManager>
+public class MainManager : Singleton<MainManager>
 {
     [SerializeField] private UIPalenItemList UIPanelItemList;
     [SerializeField] private UIItemListItem _listItemPrefab;
 
+    [SerializeField]  private List<int> _marktePriceList = new List<int>();
+
     void Start()
     {
+        LoadMarketPrice();
         ResetPanel();
         CreateListItems();
     }
@@ -54,6 +57,67 @@ public class UIManager : Singleton<UIManager>
 
             UIPanelItemList.AllItems.Add(instance);
         }
+
+        SetLastMarketValue();
+    }
+
+    private void SetLastMarketValue()
+    {
+        var allItems = UIPanelItemList.AllItems;
+        for (int i = 0; i < allItems.Count; i++)
+        {
+            allItems[i].Input_1.text = _marktePriceList[i].ToString();
+        }
+    }
+
+    public void ReadMarketPrice()
+    {
+        var allItem = UIPanelItemList.AllItems;
+        _marktePriceList.Clear();
+        for (int i = 0; i < allItem.Count; i++)
+        {
+            string inputText = allItem[i].Input_1.text;
+
+            if (int.TryParse(inputText, out int v))
+                _marktePriceList.Add(v);
+            else
+                _marktePriceList.Add(0);
+        }
+    }
+
+    private int GetMarketValue(ItemCodes code)
+    {
+        int c = (int)code;
+        if (c < _marktePriceList.Count)
+            return _marktePriceList[c];
+        else
+            return 0;
+    }
+
+
+    private void SaveMarketPrice()
+    {
+        for(int i=0;i< _marktePriceList.Count; i++)
+        {
+            PlayerPrefs.SetInt("item_market_price_"+i, _marktePriceList[i]);
+        }
+
+        PlayerPrefs.Save();
+    }
+
+    private void LoadMarketPrice()
+    {
+        _marktePriceList.Clear();
+        for (int i = 0; i < (int)ItemCodes.MAX; i++)
+        {
+            _marktePriceList.Add(PlayerPrefs.GetInt("item_market_price_" + i, 0));
+        }
+    }
+
+    public void OnClickCalculate()
+    {
+        ReadMarketPrice();
+        SaveMarketPrice();
     }
 
 }

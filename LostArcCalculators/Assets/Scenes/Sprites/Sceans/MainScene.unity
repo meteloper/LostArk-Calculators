@@ -1898,7 +1898,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 996005883}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2051902050}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnClickCalculate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &996005883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4096,7 +4108,7 @@ GameObject:
   - component: {fileID: 2051902049}
   - component: {fileID: 2051902050}
   m_Layer: 0
-  m_Name: UIManager
+  m_Name: MainManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4131,6 +4143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIPanelItemList: {fileID: 241019816}
   _listItemPrefab: {fileID: 5807884243418052517, guid: 95f1da4b4dc367643af2f7ebbde28825, type: 3}
+  _marktePriceList: 
 --- !u!1 &2082590685
 GameObject:
   m_ObjectHideFlags: 0
