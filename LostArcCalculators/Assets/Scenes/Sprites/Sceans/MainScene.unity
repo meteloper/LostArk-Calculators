@@ -2803,8 +2803,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4144,6 +4144,12 @@ MonoBehaviour:
   UIPanelItemList: {fileID: 241019816}
   _listItemPrefab: {fileID: 5807884243418052517, guid: 95f1da4b4dc367643af2f7ebbde28825, type: 3}
   _marktePriceList: 
+  _itemsVendorCountList: 
+  _itemsVendorPriceList: 
+  _itemsProfitList: 
+  _totalVenderPrice: 0
+  _totalProfit: 0
+  _lastRate: 0
 --- !u!1 &2082590685
 GameObject:
   m_ObjectHideFlags: 0
